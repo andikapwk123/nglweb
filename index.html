@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 NGL SPAMMER • by Dika Ganteng</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- SIMPLE LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memuat aplikasi...</div>
+        <div class="loading-progress" id="loadingProgress">0%</div>
+    </div>
+
+    <!-- DECORATIVE BACKGROUND -->
+    <div class="bg-gradient"></div>
+    <div class="bg-pattern"></div>
+
+    <div class="main-card" id="mainCard" style="display: none;">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <h1>NGL SPAMMER</h1>
+                <i class="fas fa-bolt"></i>
+            </div>
+            <p class="subtitle">dibuat oleh <span class="highlight">Dika Ganteng</span> • version 2.0</p>
+        </div>
+
+        <!-- QUICK INFO -->
+        <div class="info-bar">
+            <div class="info-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aman</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Cepat</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Responsive</span>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="content-grid">
+            <!-- LEFT SIDE - INPUT -->
+            <div class="input-section">
+                <div class="input-card">
+                    <div class="input-group">
+                        <label><i class="fas fa-link"></i> Link Target</label>
+                        <input type="url" id="targetLink" placeholder="https://ngl.link/username" value="">
+                        <small class="hint">Contoh: https://ngl.link/username</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-comment"></i> Pesan</label>
+                        <textarea id="message" placeholder="Tulis pesan kamu di sini...">pler ✨</textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-rocket"></i> Jumlah Kirim</label>
+                        <div class="number-input">
+                            <input type="number" id="jumlah" min="1" max="50" value="20">
+                            <span class="max-badge">max 50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE - STATS -->
+            <div class="stats-section">
+                <div class="stats-card">
+                    <h3><i class="fas fa-chart-bar"></i> Statistik</h3>
+                    
+                    <div class="stat-row">
+                        <span class="stat-name">Target</span>
+                        <span class="stat-value-badge" id="targetUsername">@Tidak di ketahui</span>
+                    </div>
+                    
+                    <div class="stat-row">
+                        <span class="stat-name">Terkirim</span>
+                        <span class="stat-number" id="sentCount">0</span>
+                    </div>
+                    
+                    <div class="stat-row">
+                        <span class="stat-name">Gagal</span>
+                        <span class="stat-number" id="failedCount">0</span>
+                    </div>
+                    
+                    <div class="stat-row">
+                        <span class="stat-name">Status</span>
+                        <span class="stat-status" id="statusText">Siap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="action-buttons">
+            <button class="btn-primary" id="attackBtn">
+                <i class="fas fa-play"></i> Mulai Spam
+            </button>
+            <button class="btn-secondary" id="stopBtn" style="display: none;">
+                <i class="fas fa-stop"></i> Hentikan
+            </button>
+        </div>
+
+        <!-- PROGRESS SECTION -->
+        <div class="progress-section" id="progressContainer">
+            <div class="progress-header">
+                <span><i class="fas fa-chart-line"></i> Progress</span>
+                <span class="progress-percent" id="progressText">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- LOG SECTION -->
+        <div class="log-section" id="logContainer">
+            <div class="log-header">
+                <i class="fas fa-terminal"></i>
+                <span>Activity Log</span>
+                <i class="fas fa-terminal"></i>
+            </div>
+            <div class="log-body" id="logBody">
+                <div class="log-empty">Belum ada aktivitas</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <i class="fas fa-code"></i> with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by Dika Ganteng
+        </div>
+    </div>
+
+    <script src="ngl.js"></script>
+    <script>
+        // Simple loading animation
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainCard = document.getElementById('mainCard');
+            const loadingProgress = document.getElementById('loadingProgress');
+            
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                loadingProgress.textContent = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            mainCard.style.display = 'block';
+                            mainCard.classList.add('fade-in');
+                        }, 300);
+                    }, 300);
+                }
+            }, 50);
+        });
+    </script>
+</body>
+</html>
