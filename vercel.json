@@ -9,6 +9,7 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/server.js" },
     { "source": "/(.*)", "destination": "/ngl.js" },
+    { "source": "/(.*)", "destination": "/style.css" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
